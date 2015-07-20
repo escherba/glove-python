@@ -29,7 +29,7 @@ def read_wikipedia_corpus(filename):
 
 
 if __name__ == '__main__':
-    
+
     # Set up command line parameters.
     parser = argparse.ArgumentParser(description='Fit a GloVe model.')
 
@@ -55,7 +55,6 @@ if __name__ == '__main__':
                         help='Get closes words to this word.')
     args = parser.parse_args()
 
-
     if args.create:
         # Build the corpus dictionary and the cooccurrence matrix.
         print('Pre-processing corpus')
@@ -69,7 +68,7 @@ if __name__ == '__main__':
         corpus_model = Corpus()
         corpus_model.fit(get_data(args.create), window=10)
         corpus_model.save('corpus.model')
-        
+
         print('Dict size: %s' % len(corpus_model.dictionary))
         print('Collocations: %s' % corpus_model.matrix.nnz)
 

@@ -1,4 +1,4 @@
-*.pyc
+*.py[cod]
 *.*~
 *.so
 *.c
@@ -9,6 +9,12 @@ dist/*
 *.corpus
 build/*
 *.txt
-Makefile~
+*~
 *.npy
 *.bz2
+*.zip
+
+env/
+cover/
+nosetests.xml
+.coverage

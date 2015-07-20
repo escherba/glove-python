@@ -1,6 +1,6 @@
 import os
 import platform
-
+from pkg_resources import resource_string
 from setuptools import setup, find_packages, Extension
 
 try:
@@ -34,8 +34,8 @@ setup(
     version='0.0.1',
     description=('Python implementation of Global Vectors '
                  'for Word Representation (GloVe)'),
-    long_description='',
-    packages=["glove"],
+    long_description=resource_string(__name__, 'README.rst'),
+    packages=find_packages(exclude=['tests', 'examples']),
     install_requires=['numpy',
                       'cython',
                       'scipy'],
