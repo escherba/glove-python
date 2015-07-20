@@ -5,13 +5,13 @@ get-wiki: $(INPUT_FILE)
 $(INPUT_FILE):
 	wget http://dumps.wikimedia.org/enwiki/latest/$(INPUT_FILE)
 
-process-wiki:
+process-wiki: $(INPUT_FILE)
 	$(PYTHON) -- examples/example.py -w -c $(INPUT_FILE)
 
-train-wiki:
+train-wiki: process-wiki
 	$(PYTHON) -i -- examples/example.py -t 30 -p 2
 
-all-wiki: $(INPUT_FILE) process-wiki train-wiki
+all-wiki: process-wiki train-wiki
 	@echo "done"
 
 .PHONY: get-wiki process-wiki train-wiki
