@@ -12,6 +12,7 @@ build/*
 *.npy
 *.bz2
 *.zip
+*.sw[op]
 
 env/
 cover/
