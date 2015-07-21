@@ -5,6 +5,12 @@ get-wiki: $(INPUT_FILE)
 $(INPUT_FILE):
 	wget http://dumps.wikimedia.org/enwiki/latest/$(INPUT_FILE)
 
+memcheck: $(INPUT_FILE)
+	valgrind --tool=memcheck --dsymutil=yes --leak-check=full \
+		--show-leak-kinds=all --track-origins=yes \
+		--suppressions=valgrind-python.supp \
+		env/bin/python -- examples/example.py -w -c $(INPUT_FILE) 2> valgrind_python_stderr.txt
+
 process-wiki: $(INPUT_FILE)
 	$(PYTHON) -- examples/example.py -w -c $(INPUT_FILE)
 
